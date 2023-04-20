@@ -1,27 +1,28 @@
 
 
+let data = [
+
+]
 
 
 function all(req, res) {
 
     try {
-        res.render("index")
+        res.render("index", {database : data})
     } catch (err) {
         console.log(err)
         res.send(err)
     }
 }
 
-let database = [
 
-]
 
 
 function add (req, res){
-
-    database.push({tarefa : req.body})
-    console.log(database)
-    res.render("index", {database : database})
+    let tarefa = req.body.tarefa
+    data.push({tarefa : tarefa})
+    
+    res.redirect("/")
 }
 
 export { all , add}
